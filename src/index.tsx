@@ -17,6 +17,9 @@ const IdfaAaid = NativeModules.IdfaAaid
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return IdfaAaid.multiply(a, b);
+export async function getAdvertisingInfo(): Promise<{
+  isAdTrackingLimited: boolean;
+  id?: string;
+}> {
+  return await IdfaAaid.getAdvertisingInfo();
 }

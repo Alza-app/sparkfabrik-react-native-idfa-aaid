@@ -5,6 +5,8 @@
 # XDE
 .expo/
 
+gradle/
+
 # VSCode
 .vscode/
 jsconfig.json

@@ -1,18 +1,24 @@
 import * as React from 'react';
 
 import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-idfa-aaid';
+import { getAdvertisingInfo } from 'react-native-idfa-aaid';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
+  const [result, setResult] = React.useState<{
+    isAdTrackingLimited: boolean;
+    id?: string;
+  }>();
 
   React.useEffect(() => {
-    multiply(3, 7).then(setResult);
+    getAdvertisingInfo().then(setResult);
   }, []);
 
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Text>
+        isAdTrackingLimited: {result?.isAdTrackingLimited?.toString()}
+      </Text>
+      <Text>id: {result?.id}</Text>
     </View>
   );
 }
